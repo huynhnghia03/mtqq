@@ -50,6 +50,17 @@ app.get("/api/esp32/data", async (req, res) => {
   }
 });
 
+
+app.get("/", async (req, res) => {
+  
+  try {
+    
+    res.json({ status: "success", data: "server is running" });
+  } catch (error) {
+   
+    res.status(500).json({ status: "error", message: "Failed to communicate with server" });
+  }
+});
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
